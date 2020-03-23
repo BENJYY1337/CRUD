@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+</head>
+<header>
+    <h1>Mon CRUD</h1>
+    <a href="./create.html">create</a>
+    <a href="./delete.html">delete</a>
+    <a href="./read.html">read</a>
+    <a href="./update.html">update</a>
+</header>
+<body>
+    <form action="../Controllers/update_ctrl.php" method="POST">
+        <fieldset>
+            <legend>Nous contacter</legend>
+            <div>
+                <label for="pseudoinput">Votre pseudo</label>
+                <input type="text" name="pseudo" id="pseudoinput">
+            </div>
+            <div>
+                <label for="passwordinput">Votre mot de passe</label>
+                <input type="password" name="mot_de_passe" id="passwordinput" minlength="8">
+            </div>
+            <div>
+                <label for="descriptioninput">Votre message</label>
+                <textarea name="description" id="descriptioninput" cols="30" rows="10" placeholder="votre description" spellcheck="true"></textarea>
+            </div>
+            <div>
+                <label><input type="checkbox" name="cgu" required checked>J'accepte les conditions d'utilisations</label>
+            </div>
+            <input type="submit" value="Envoyer un email">
+            <input type="reset" value="Annuler">
+        </fieldset>
+    </form>
+</body>
+</html>
