@@ -20,14 +20,14 @@
                 try {
                     $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query= $bdd->prepare("SELECT pseudo FROM user WHERE pseudo=:pseudo"); // verifie que les données rentrées sont bonnes par rapport a la bdd
+                    $query= $bdd->prepare("SELECT pseudo FROM user WHERE pseudo=:pseudo"); // verifie que les données rentrées sont bonnes par rapport à la bdd
                     $query->execute(array(':pseudo' => $pseudo)); // Exécute une requête préparée
-                    $val = $query->fetch(); // recupere les valeurs preparée
+                    $val = $query->fetch(); // recupere les valeurs preparées
                     if($val == null){
-                        $query->closeCursor();  // Ferme le curseur, permettant à query d'être de nouveau exécutée
+                        $query->closeCursor();  // Ferme le curseur, permettant à query d'être de nouveau exécuté
                         return (-1);
                     }
-                    $query = $bdd->prepare("UPDATE user SET mot_de_passe=:mot_de_passe , description=:description WHERE pseudo=:pseudo"); // Update donnée user
+                    $query = $bdd->prepare("UPDATE user SET mot_de_passe=:mot_de_passe , description=:description WHERE pseudo=:pseudo"); // Update  les données user
                     $query->execute(array(':mot_de_passe' => $motdepasse, ':description' => $description, 'pseudo'=> $pseudo));
                     return (0);
                 } catch (PDOException $e) {

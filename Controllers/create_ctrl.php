@@ -17,8 +17,8 @@
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configure un attribut PDO
                 $query= $bdd->prepare("SELECT pseudo, mot_de_passe, description FROM user WHERE pseudo=:pseudo AND mot_de_passe=:mot_de_passe AND description=:description"); // verifie que les données rentrées sont bonnes par rapport a la bdd 
                 $query->execute(array(':pseudo' => $pseudo, ':mot_de_passe' => $motdepasse, ':description' => $description)); // Exécute une requête préparée
-                $query->closeCursor(); // Ferme le curseur, permettant à query d'être de nouveau exécutée
-
+                $query->closeCursor(); // Ferme le curseur, permettant à query d'être de nouveau exécuté
+                
                 $query= $bdd->prepare("INSERT INTO user (pseudo, mot_de_passe, description) VALUES (:pseudo, :mot_de_passe, :description)"); // inserer des valeurs dans la base
                 $query->execute(array(':pseudo' => $pseudo, ':mot_de_passe' => $motdepasse, ':description' => $description)); // Exécute une requête préparée
             return (0);

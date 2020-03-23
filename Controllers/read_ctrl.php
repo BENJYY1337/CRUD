@@ -9,10 +9,10 @@ if (!(isset ($_POST['Envoyer']))){
             //strictement comme sql la construit
             //$today = date("y-m-d");
     if(($val = read_user($pseudo)) == -1){
-        echo "User not found";
+        echo "User not found"; // Erreur écrite
     }
     else {
-        echo $val['mot_de_passe'] , "\n";
+        echo $val['mot_de_passe'];
         echo $val['description'];
     }
 }
@@ -25,11 +25,11 @@ if (!(isset ($_POST['Envoyer']))){
         try {
             $bdd = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configure un attribut PDO
-            $query= $bdd->prepare("SELECT mot_de_passe, description FROM user WHERE pseudo=:pseudo"); // verifie que les données rentrées sont bonnes par rapport a la bdd
-            $query->execute(array(':pseudo' => $pseudo));
-            $val = $query->fetch(); // recupere les valeurs preparée
+            $query= $bdd->prepare("SELECT mot_de_passe, description FROM user WHERE pseudo=:pseudo"); // verifie que les données rentrées sont bonnes par rapport à la bdd
+            $query->execute(array(':pseudo' => $pseudo)); // Exécute une requête préparée
+            $val = $query->fetch(); // recupere les valeurs preparées
             if($val == null){
-                $query->closeCursor();  // Ferme le curseur, permettant à query d'être de nouveau exécutée
+                $query->closeCursor();  // Ferme le curseur, permettant à query d'être de nouveau exécuté
                 return (-1);
             }
             $query->closeCursor();
