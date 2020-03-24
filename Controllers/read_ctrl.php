@@ -35,6 +35,7 @@ if (!(isset ($_POST['Envoyer']))){
                 return (-1);
             }
             $query->closeCursor();
+            echo 'Read success !' , '<br>';
             return ($val);
         } catch (PDOException $e) {
     }

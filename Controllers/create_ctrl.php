@@ -21,6 +21,7 @@
 
                 $query= $bdd->prepare("INSERT INTO user (pseudo, mot_de_passe, description) VALUES (:pseudo, :mot_de_passe, :description)"); // inserer des valeurs dans la base
                 $query->execute(array(':pseudo' => $pseudo, ':mot_de_passe' => $motdepasse, ':description' => $description)); // Exécute une requête préparée
+            echo 'Create success !';
             return (0);
         } catch (PDOException $e) {
     }

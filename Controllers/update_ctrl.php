@@ -27,8 +27,9 @@
                         $query->closeCursor();  // Ferme le curseur, permettant à query d'être de nouveau exécuté
                         return (-1);
                     }
-                    $query = $bdd->prepare("UPDATE user SET mot_de_passe=:mot_de_passe , description=:description WHERE pseudo=:pseudo"); // Update  les données user
+                    $query = $bdd->prepare("UPDATE user SET mot_de_passe=:mot_de_passe , description=:description WHERE pseudo=:pseudo"); // Update les données user
                     $query->execute(array(':mot_de_passe' => $motdepasse, ':description' => $description, 'pseudo'=> $pseudo));
+                    echo 'Update success !' , '<br>';
                     return (0);
                 } catch (PDOException $e) {
             }

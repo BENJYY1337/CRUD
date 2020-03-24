@@ -23,5 +23,6 @@
                 $query->execute(array('pseudo'=> $pseudo));
             } catch (PDOException $e) {
         }
+        echo 'Delete success !';
     }
             ?>
