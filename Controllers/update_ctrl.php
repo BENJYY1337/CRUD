@@ -2,7 +2,7 @@
         if (!(isset ($_POST['Envoyer']))){
             //On récupère les valeurs entrées par l'utilisateur :
             $pseudo=htmlspecialchars($_POST['pseudo']);
-            $motdepasse=htmlspecialchars($_POST['mot_de_passe']);
+            $motdepasse=htmlspecialchars(hash("Whirlpool",$_POST['mot_de_passe'])); // hash = Génère une valeur de hachage (empreinte numérique)
             $description=htmlspecialchars($_POST['description']);
             //On construit la date d'aujourd'hui
             //strictement comme sql la construit

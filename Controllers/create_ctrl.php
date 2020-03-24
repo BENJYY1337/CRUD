@@ -2,7 +2,7 @@
         if (!(isset ($_POST['Envoyer']))){
             //On récupère les valeurs entrées par l'utilisateur :
             $pseudo=htmlspecialchars($_POST['pseudo']);
-            $motdepasse=htmlspecialchars($_POST['mot_de_passe']);
+            $motdepasse=htmlspecialchars(hash("Whirlpool",$_POST['mot_de_passe'])); // hash = Génère une valeur de hachage (empreinte numérique)
             $description=htmlspecialchars($_POST['description']);
             //On construit la date d'aujourd'hui
             //strictement comme sql la construit
@@ -18,7 +18,7 @@
                 $query= $bdd->prepare("SELECT pseudo, mot_de_passe, description FROM user WHERE pseudo=:pseudo AND mot_de_passe=:mot_de_passe AND description=:description"); // verifie que les données rentrées sont bonnes par rapport a la bdd 
                 $query->execute(array(':pseudo' => $pseudo, ':mot_de_passe' => $motdepasse, ':description' => $description)); // Exécute une requête préparée
                 $query->closeCursor(); // Ferme le curseur, permettant à query d'être de nouveau exécuté
-                
+
                 $query= $bdd->prepare("INSERT INTO user (pseudo, mot_de_passe, description) VALUES (:pseudo, :mot_de_passe, :description)"); // inserer des valeurs dans la base
                 $query->execute(array(':pseudo' => $pseudo, ':mot_de_passe' => $motdepasse, ':description' => $description)); // Exécute une requête préparée
             return (0);

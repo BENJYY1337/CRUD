@@ -11,10 +11,12 @@ if (!(isset ($_POST['Envoyer']))){
     if(($val = read_user($pseudo)) == -1){
         echo "User not found"; // Erreur écrite
     }
-    else {
         echo $val['mot_de_passe'];
+        ?>
+        <html> </br> </html>
+        <?php
         echo $val['description'];
-    }
+        
 }
     function read_user($pseudo){
         // on se connecte a la base
